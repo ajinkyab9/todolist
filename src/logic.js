@@ -18,11 +18,11 @@ class Project {
     this.projectTasks = [];
     this.projectName = projectName;
   }
+  addTask(todo) {
+    this.projectTasks.push(todo);
+    console.log(`Successfully added: ${todo.todoTitle} to ${this.projectName}`);
+  }
 }
 
-function addTask() {
-  todoLists.push(projectTasks);
-  console.log(todoLists);
-}
+export { todoMain, Project };
 
-addTask("Buy Keyboard");

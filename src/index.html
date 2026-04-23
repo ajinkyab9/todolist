@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To eDo List</title>
+</head>
+<body>
+<button type="button"  id="triggerTodoModal">Add Todo</button>
+<dialog id="newTodoTrigger">
+    <form action="">
+        <button type="button" id="closeModal">Cancel</button>
+        <label for="todoTitle">Todo Title</label>
+        <input type="text" id="todoTitle" name="todoTitle">
+        <label for="todoDescription">Description</label>
+        <input type="text" name="todoDescription" id="todoDescription">
+        <label for="startDate">Start Date</label>
+        <input type="date" id="startDate" name="startDate">
+        <label for="endDate">End Date</label>
+        <input type="date" id="endDate" name="endDate">
+        <label for="selectPriority">Priority</label>
+        <select name="selectPriority" id="selectPriority">
+            <option value="">Select</option>
+            <option value="low">Low</option>
+            <option value="medium">Medium</option>
+            <option value="high">High</option>
+        </select>
+    </form>
+</dialog>
+</body>
+</html>

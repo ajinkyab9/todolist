@@ -1,0 +1,14 @@
+#dependencies
+node_modules
+
+#build output
+dist/
+dist
+
+#os generated files
+.DS_Store
+thumbs.db
+
+#ide settings
+.vscode/
+.idea/
