@@ -23,6 +23,7 @@ export const createTodoCard = (task) => {
     <p class="taskDetails">Priority: <span class="displayPriority"></span></p>
     <p class="taskDetails">Notes: <span class="displayNotes"></span></p>
     <button type="button" class="deleteTaskBtn">Delete Task</button>
+    <button type="button" class="editTaskBtn">Edit Task</button>
   `;
 
   todoCard.querySelector(".displayTitle").textContent = task.todoTitle;

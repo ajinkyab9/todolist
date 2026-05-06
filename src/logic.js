@@ -28,7 +28,5 @@ class Project {
   }
 }
 
-
-
 export { todoMain, Project };
 
