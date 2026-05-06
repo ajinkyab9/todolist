@@ -1,0 +1,17 @@
+#taskCard {
+    height: 20vh;
+    min-height: 20vh;
+    height: auto;
+    width: 15vw;
+    background-color: antiquewhite;
+}
+
+.taskCard.completed {
+    opacity: 0.6;
+    background-color: #d1ffd1;
+}
+
+.taskCard.completed .displayTitle {
+    text-decoration: line-through;
+    color: grey;
+}
