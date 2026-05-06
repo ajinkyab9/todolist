@@ -1,10 +1,14 @@
 import { todoMain, Project } from "./logic.js";
 import { triggerNewTodo, refreshUI } from "./ui_handler.js";
+import { saveToLocalStorage, loadFromLocalStorage } from "./state_manager.js";
 import "./styles.css";
 
-const newProject = new Project();
+// const newProject = new Project();
+const newProject = loadFromLocalStorage();
 const todoForm = document.getElementById("todoForm");
 const listContainer = document.getElementById("todo-list-container");
+
+refreshUI(newProject.projectTasks);
 
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
@@ -18,6 +22,7 @@ todoForm.addEventListener("submit", (e) => {
   newProject.addTask(newTask);
 
   refreshUI(newProject.projectTasks);
+  saveToLocalStorage(newProject);
   todoForm.reset();
   triggerNewTodo.close();
   console.log(newProject);
@@ -31,6 +36,8 @@ listContainer.addEventListener("click", (e) => {
   if (e.target.classList.contains("deleteTaskBtn")) {
     newProject.deleteTask(taskId);
     refreshUI(newProject.projectTasks);
+
+    saveToLocalStorage(newProject);
   }
 
   if (e.target.classList.contains("todoCheck")) {
@@ -40,6 +47,8 @@ listContainer.addEventListener("click", (e) => {
     if (taskToToggle) {
       taskToToggle.toggleStatus();
       refreshUI(newProject.projectTasks);
+
+      saveToLocalStorage(newProject);
     }
   }
 });
