@@ -1,12 +1,12 @@
 class todoMain {
-  constructor(todoTitle, startDate, endDate, todoDescription, priority) {
+  constructor(todoTitle, dueDate, todoDescription, priority, todoNotes) {
     this.createTime = Date.now();
     this.todoId = crypto.randomUUID();
     this.todoTitle = todoTitle;
-    this.startDate = startDate;
-    this.endDate = endDate;
+    this.dueDate = dueDate;
     this.todoDescription = todoDescription;
     this.priority = priority;
+    this.todoNotes = todoNotes;
     this.todoComplete = false;
   }
   toggleStatus() {

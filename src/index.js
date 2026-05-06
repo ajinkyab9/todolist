@@ -1,54 +1,45 @@
-import { startOfMinute } from "date-fns";
 import { todoMain, Project } from "./logic.js";
-import {
-  triggerNewTodo,
-  deleteTaskBtn,
-  createTodoCard,
-  refreshUI,
-} from "./ui_handler.js";
+import { triggerNewTodo, refreshUI } from "./ui_handler.js";
 import "./styles.css";
 
 const newProject = new Project();
-
 const todoForm = document.getElementById("todoForm");
+const listContainer = document.getElementById("todo-list-container");
 
 todoForm.addEventListener("submit", (e) => {
   e.preventDefault();
-
-  //grabbing values
   const title = document.getElementById("todoTitle").value;
   const desc = document.getElementById("todoDescription").value;
-  const start = document.getElementById("startDate").value;
-  const end = document.getElementById("endDate").value;
+  const due = document.getElementById("dueDate").value;
   const priority = document.getElementById("selectPriority").value;
+  const notes = document.getElementById("todoNotes").value;
 
-  //creating new task
-  const newTask = new todoMain(title, start, end, desc, priority);
+  const newTask = new todoMain(title, due, desc, priority, notes);
   newProject.addTask(newTask);
 
-  //to render the cards
   refreshUI(newProject.projectTasks);
   todoForm.reset();
+  triggerNewTodo.close();
   console.log(newProject);
 });
 
-//deleting a task
-
-// index.js
-const listContainer = document.getElementById("todo-list-container");
-
 listContainer.addEventListener("click", (e) => {
-  // Check if they clicked the delete button (using a CLASS, not ID)
+  const card = e.target.closest(".taskCard");
+  if (!card) return;
+  const taskId = card.getAttribute("data-id");
+
   if (e.target.classList.contains("deleteTaskBtn")) {
-    // Find the parent card and grab the UUID we stored there
-    const card = e.target.closest(".taskCard");
-    const taskId = card.getAttribute("data-id");
-
-    // 1. Update the Data
     newProject.deleteTask(taskId);
-
-    // 2. Update the UI
-    // You'll need to create a function in uihandler to "redraw" the list
     refreshUI(newProject.projectTasks);
+  }
+
+  if (e.target.classList.contains("todoCheck")) {
+    const taskToToggle = newProject.projectTasks.find(
+      (t) => t.todoId === taskId,
+    );
+    if (taskToToggle) {
+      taskToToggle.toggleStatus();
+      refreshUI(newProject.projectTasks);
+    }
   }
 });
