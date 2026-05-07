@@ -24,7 +24,11 @@ class Project {
   }
 
   deleteTask(id) {
-    this.projectTasks = this.projectTasks.filter(task => task.todoId !== id);
+    this.projectTasks = this.projectTasks.filter((task) => task.todoId !== id);
+  }
+
+  getTaskId(id) {
+    return this.projectTasks.find((task) => task.todoId === id);
   }
 }
 
