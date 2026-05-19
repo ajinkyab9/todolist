@@ -1,35 +1,57 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>To eDo List</title>
-    <link rel="stylesheet" href="./styles.css">
-</head>
-<body>
-<button type="button"  id="triggerTodoModal">Add Todo</button>
-<dialog id="newTodoTrigger">
-    <form action="" id="todoForm">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To Do List App</title>
+  </head>
+  <body>
+    <div class="app-container">
+      <aside id="project-sidebar">
+        <div class="sidebar-header">
+          <div><h2>My Projects</h2></div>
+          <div><button type="button" id="addProjectBtn">Add +</button></div>
+        </div>
+        <ul id="project-list"></ul>
+      </aside>
+      <main id="main-content">
+        <header class="main-header">
+          <button type="button" id="triggerTodoModal">Add Todo</button>
+        </header>
+        <div id="todo-list-container"></div>
+      </main>
+    </div>
+    <dialog id="newTodoTrigger">
+      <form action="" id="todoForm">
         <button type="button" id="closeModal">Cancel</button>
         <label for="todoTitle">Todo Title</label>
-        <input type="text" id="todoTitle" name="todoTitle">
+        <input type="text" id="todoTitle" name="todoTitle" required />
         <label for="todoDescription">Description</label>
-        <input type="text" name="todoDescription" id="todoDescription">
+        <input type="text" name="todoDescription" id="todoDescription" required/>
         <label for="dueDate">Due Date</label>
-        <input type="date" id="dueDate" name="dueDate">
+        <input type="date" id="dueDate" name="dueDate" required/>
         <label for="selectPriority">Priority</label>
         <select name="selectPriority" id="selectPriority">
-            <option value="">Select</option>
-            <option value="low">Low</option>
-            <option value="medium">Medium</option>
-            <option value="high">High</option>
+          <option>Select</option>
+          <option value="low">Low</option>
+          <option value="medium">Medium</option>
+          <option value="high">High</option>
         </select>
         <label for="todoNotes">Notes:</label>
         <textarea name="todoNotes" id="todoNotes"></textarea>
         <button type="submit">Save</button>
-    </form>
-</dialog>
-<div id="todo-list-container">
-</div>
-</body>
+      </form>
+    </dialog>
+    <dialog id="newProjectModal">
+      <form id="projectForm">
+        <h3>Create New Project</h3>
+        <label for="projectName">Project Name</label>
+        <input type="text" id="projectName" placeholder="e.g. Gym, Poetry, Coding" required/>
+        <div class="btn-row">
+          <button type="button" id="closeProjectModal">Cancel</button>
+          <button type="submit">Create Project</button>
+        </div>
+      </form>
+    </dialog>
+  </body>
 </html>
