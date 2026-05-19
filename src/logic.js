@@ -16,6 +16,8 @@ class todoMain {
 
 class Project {
   constructor(projectName) {
+    this.projectName = projectName;
+    this.projectId = crypto.randomUUID();
     this.projectTasks = [];
   }
   addTask(todo) {
